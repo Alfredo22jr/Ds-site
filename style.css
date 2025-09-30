@@ -1,0 +1,465 @@
+/* =========================
+   VARIÁVEIS DE COR E FONTES
+========================= */
+:root {
+  --cor-principal: #800020;      /* vinho */
+  --cor-secundaria: #333333;     /* cinza grafite */
+  --cor-fundo: #919191;          /* fundo com textura */
+  --cor-texto: #111111;          /* texto escuro */
+  --cor-hover: #ffd700;           /* destaque dourado */
+  --fonte-principal: 'Poppins', sans-serif; /* limpa e industrial */
+}
+
+/* =========================
+   ESTILO GERAL
+========================= */
+body {
+  margin: 0;
+  font-family: var(--fonte-principal);
+  background: var(--cor-fundo) url("imagens/textura-metalica.png") repeat;
+  color: var(--cor-texto);
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+header {
+  background: var(--cor-secundaria);
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.logo {
+  font-size: 2em;
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+nav a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--cor-principal);
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--cor-principal);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 120px 20px;
+
+  /* Fundo com duas imagens e overlay vinho */
+  background: 
+    linear-gradient(rgba(128,0,32,0.7), rgba(128,0,32,0.7)),
+    url("imagens/fundo1.jpg") left center/50% 100% no-repeat,
+    url("imagens/fundo2.jpg") right center/50% 100% no-repeat;
+}
+
+.hero h1 {
+  font-size: 4em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+.hero p {
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+section {
+  padding: 60px 20px;
+  text-align: center;
+  scroll-margin-top: 100px;
+  background: rgba(255,255,255,0.9);
+  border-bottom: 1px solid #444;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+}
+
+#sobre h2, 
+#produtos h2, 
+#contato h2 {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--cor-secundaria);
+  margin-bottom: 30px;
+}
+
+#sobre h2::before,
+#sobre h2::after,
+#produtos h2::before,
+#produtos h2::after,
+#contato h2::before,
+#contato h2::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 3px;
+  background: var(--cor-principal);
+}
+
+#sobre h2::before,
+#produtos h2::before,
+#contato h2::before { left: -70px; }
+
+#sobre h2::after,
+#produtos h2::after,
+#contato h2::after { right: -70px; }
+
+#sobre p {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  text-align: justify;
+}
+
+/* =========================
+   VALORES
+========================= */
+#sobre .valores {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+#sobre .valores p {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  color: #333;
+  background: #eee;
+  padding: 10px 15px;
+  border-left: 5px solid var(--cor-principal);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: background 0.3s;
+}
+
+#sobre .valores p:hover {
+  background: #e9e9e9;
+}
+
+#sobre .valores span {
+  font-size: 1.4rem;
+  color: var(--cor-principal);
+}
+
+/* =========================
+   CATEGORIAS DE SERVIÇO
+========================= */
+.categoria-servico {
+  margin-bottom: 60px;
+}
+
+.categoria-servico h3 {
+  font-size: 2rem;
+  color: var(--cor-principal);
+  margin-bottom: 10px;
+}
+
+.categoria-servico p {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  font-size: 1.1rem;
+  color: #555;
+  text-align: justify;
+}
+
+/* =========================
+   GALERIA DE PRODUTOS
+========================= */
+.produtos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.produtos-container .item {
+  background: #fff;
+  border: 2px solid var(--cor-secundaria);
+  border-radius: 14px;
+  overflow: hidden;
+  width: 300px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.produtos-container .item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.produtos-container img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.produtos-container p {
+  padding: 12px;
+  background: var(--cor-principal);
+  color: #fff;
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 0 0 14px 14px;
+}
+
+/* =========================
+   CONTATO
+========================= */
+#contato a {
+  color: var(--cor-principal);
+  text-decoration: none;
+}
+
+#contato a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+footer {
+  background: var(--cor-secundaria);
+  color: #ddd;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: var(--cor-principal);
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media (max-width: 900px) {
+  .produtos-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .produtos-container .item {
+    width: 90%;
+  }
+}
+
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  #sobre h2, #produtos h2, #contato h2 {
+    font-size: 2rem;
+  }
+
+  #sobre h2::before,
+  #sobre h2::after,
+  #produtos h2::before,
+  #produtos h2::after,
+  #contato h2::before,
+  #contato h2::after {
+    width: 30px;
+    left: -40px;
+    right: -40px;
+  }
+
+  .hero h1 {
+    font-size: 2.2em;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .hero {
+    min-height: 70vh;
+  }
+}
+/* Botão CTA */
+.btn-cta {
+  display: inline-block;
+  margin-top: 25px;
+  background: var(--cor-principal);
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.btn-cta:hover {
+  background: #a00028;
+}
+
+/* Alternância de fundo */
+#sobre { background: #f8f8f8; }
+#produtos { background: #fff; }
+#contato { background: #f8f8f8; }
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Hero Section com slideshow */
+.hero {
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+}
+
+.btn {
+  background: #800020; /* vinho */
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #a52a2a;
+}
+.produtos-container img {
+  width: 100%;
+  height: 220px;         /* todas no mesmo tamanho */
+  object-fit: cover;     /* corta e centraliza */
+  border-radius: 10px;   /* cantos arredondados */
+  filter: brightness(1.05) contrast(1.1); /* mais vivas */
+}
+#contato .mapa {
+  margin-top: 20px;
+}
+
+#contato iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
